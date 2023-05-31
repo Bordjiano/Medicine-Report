@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Лікарські припарати</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+</head>
+<body>
+<div class="container">
+    <h1>Генерація записів ліків</h1>
+    <div class="row">
+        <br>
+        <form action="#" th:action="@{/add}" th:object="${medicine}"
+              method="post">
+            <table>
+                <tr>
+                    <td>Назва:</td>
+                    <td><input type="text" :field="*{name}" name="name"> </td>
+                </tr>
+                <tr>
+                <td>Кількість:</td>
+                    <td><input type="text" :field="*{amount}" name="amount"></td>
+                </tr>
+                <tr>
+                    <td>Тип:</td>
+                    <td><input type="text" :field="*{type}" name="type"></td>
+                </tr>
+                <tr>
+                    <td><button type="submit">Add</button> </td>
+                </tr>
+            </table>
+        </form>
+        <br>
+        <div>
+            <a href="/download/pdf">Скачати PDF файл</a> <br>
+            <a href="/download/excel">Скачати EXCEL файл</a><br>
+        </div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Назва</th>
+                <th>Кількість</th>
+                <th>Тип</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="medicine : ${medicines}">
+                <td th:text="${medicine.name}"></td>
+                <td th:text="${medicine.amount}"></td>
+                <td th:text="${medicine.type}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

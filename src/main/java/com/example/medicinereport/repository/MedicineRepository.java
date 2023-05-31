@@ -1,2 +1,7 @@
-package com.example.medicinereport.repository;public class MedicineRepository {
+package com.example.medicinereport.repository;
+
+import com.example.medicinereport.model.Medicine;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface MedicineRepository extends JpaRepository<Medicine, Long> {
 }
